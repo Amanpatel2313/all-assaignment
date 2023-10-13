@@ -1,0 +1,116 @@
+1. function countWordOccurrences(text) {
+  // Split the input text into words
+  const words = text.split(/\s+/);
+
+  // Create a Map to store word counts
+  const wordCountMap = new Map();
+
+  // Iterate through the words and count their occurrences
+  for (const word of words) {
+    // Remove any non-alphabetic characters and convert to lowercase for consistency
+    const cleanWord = word.replace(/[^a-zA-Z]/g, "").toLowerCase();
+
+    // Skip empty words
+    if (cleanWord.length === 0) {
+      continue;
+    }
+
+    if (wordCountMap.has(cleanWord)) {
+      // Increment the count if the word is already in the Map
+      wordCountMap.set(cleanWord, wordCountMap.get(cleanWord) + 1);
+    } else {
+      // Initialize the count to 1 for a new word
+      wordCountMap.set(cleanWord, 1);
+    }
+  }
+
+  return wordCountMap;
+}
+
+// Example usage:
+const text = "This is a sample text. This text contains some words. This is a test.";
+const wordCounts = countWordOccurrences(text);
+
+// Print the word counts
+for (const [word, count] of wordCounts.entries()) {
+  console.log(`${word}: ${count}`);
+}
+
+
+2.function removeDuplicates(arr) {
+  return [...new Set(arr)];
+}
+
+// Example usage:
+const numbers = [1, 2, 2, 3, 4, 4, 5, 6, 6];
+const uniqueNumbers = removeDuplicates(numbers);
+
+console.log(uniqueNumbers); // [1, 2, 3, 4, 5, 6]
+
+
+3.function swapValuesWithoutTempVariable(x, y) {
+  [x, y] = [y, x];
+  return [x, y];
+}
+
+// Example usage:
+let a = 5;
+let b = 10;
+
+const result = swapValuesWithoutTempVariable(a, b);
+console.log(result); // Output: [10, 5]
+console.log("a =", a); // Output: a = 10
+console.log("b =", b); // Output: b = 5
+
+
+4.function extractElements(arr) {
+  const [first, second, ...rest] = arr;
+  const last = rest[rest.length - 1];
+  return [first, second, last];
+}
+
+// Example usage:
+const inputArray = [1, 2, 3, 4, 5];
+const extractedElements = extractElements(inputArray);
+
+console.log(extractedElements); // Output: [1, 2, 5]
+
+
+5.function findMaxAndMin(arr) {
+  if (arr.length === 0) {
+    return { max: undefined, min: undefined };
+  }
+
+  const max = Math.max(...arr);
+  const min = Math.min(...arr);
+
+  return { max, min };
+}
+
+// Example usage:
+const numbers = [5, 2, 7, 1, 9];
+const result = findMaxAndMin(numbers);
+
+console.log(result); // Output: { max: 9, min: 1 }
+
+
+6.function extractNameAndStreet(person) {
+  const { name, address: { street } } = person;
+  return { name, street };
+}
+
+// Example usage:
+const person = {
+  name: "Mithun",
+  age: 21,
+  address: {
+    street: "B8, Block B, Industrial Area.",
+    city: "Sector 62, Noida",
+    state: "Uttar Pradesh",
+  },
+};
+
+const extractedData = extractNameAndStreet(person);
+
+console.log(extractedData); // Output: { name: "Mithun", street: "B8, Block B, Industrial Area." }
+
